@@ -1,4 +1,7 @@
-const screenshot = async model => {
+const screenshot = async (model, options = {}) => {
+  const width = typeof options.width === 'number' ? options.width : 1024;
+  const height = typeof options.height === 'number' ? options.height : 1024;
+
   const scene = new THREE.Scene();
 
   const ambientLight = new THREE.AmbientLight(0x808080);
@@ -11,7 +14,7 @@ const screenshot = async model => {
   /* const gridHelper = new THREE.GridHelper(10, 10);
   scene.add(gridHelper); */
 
-  const camera = new THREE.PerspectiveCamera(90, 1, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera(90, width / height, 0.1, 1000);
   const dist = 10;
   camera.position.copy(model.boundingBoxMesh.position).add(new THREE.Vector3(0, 0, dist));
   //camera.lookAt(model.boundingBoxMesh.getWorldPosition(new THREE.Vector3()));
@@ -23,7 +26,7 @@ const screenshot = async model => {
   // camera.lookAt(model.boundingBoxMesh.getWorldPosition(new THREE.Vector3()));
 
   const renderer = new THREE.WebGLRenderer();
-  renderer.setSize(1024, 1024);
+  renderer.setSize(width, height);
 
   const oldParent = model.parent;
   const oldPosition = model.position.clone();
