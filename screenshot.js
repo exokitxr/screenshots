@@ -14,8 +14,8 @@ const screenshot = async (model, options = {}) => {
   /* const gridHelper = new THREE.GridHelper(10, 10);
   scene.add(gridHelper); */
 
-  const camera = new THREE.PerspectiveCamera(90, width / height, 0.1, 1000);
-  const dist = 10;
+  const camera = new THREE.PerspectiveCamera(90, width / height, 100, 2000);
+  const dist = 500;
   camera.position.copy(model.boundingBoxMesh.position).add(new THREE.Vector3(0, 0, dist));
   //camera.lookAt(model.boundingBoxMesh.getWorldPosition(new THREE.Vector3()));
   // const localAabb = model.boundingBoxMesh.scale.clone().applyQuaternion(model.quaternion);
