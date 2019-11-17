@@ -25,7 +25,10 @@ const screenshot = async (model, options = {}) => {
 
   // camera.lookAt(model.boundingBoxMesh.getWorldPosition(new THREE.Vector3()));
 
-  const renderer = new THREE.WebGLRenderer();
+  const renderer = new THREE.WebGLRenderer({
+    alpha: true,
+    antialias: true,
+  });
   renderer.setSize(width, height);
 
   const oldParent = model.parent;
