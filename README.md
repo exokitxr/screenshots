@@ -1,1 +1,2 @@
-# THREE.js screenshot library
+# screenshots
+THREE.js screenshot library
