@@ -19,8 +19,8 @@ const screenshot = async (model, options = {}) => {
   camera.position.copy(model.boundingBoxMesh.position).add(new THREE.Vector3(0, 0, dist));
   //camera.lookAt(model.boundingBoxMesh.getWorldPosition(new THREE.Vector3()));
   // const localAabb = model.boundingBoxMesh.scale.clone().applyQuaternion(model.quaternion);
-  const height = Math.max(model.boundingBoxMesh.scale.x, model.boundingBoxMesh.scale.y, model.boundingBoxMesh.scale.z);
-  camera.fov = 2 * Math.atan( height / ( 2 * dist ) ) * ( 180 / Math.PI );
+  const modelHeight = Math.max(model.boundingBoxMesh.scale.x, model.boundingBoxMesh.scale.y, model.boundingBoxMesh.scale.z);
+  camera.fov = 2 * Math.atan( modelHeight / ( 2 * dist ) ) * ( 180 / Math.PI );
   camera.updateProjectionMatrix();
 
   // camera.lookAt(model.boundingBoxMesh.getWorldPosition(new THREE.Vector3()));
