@@ -4,12 +4,18 @@ const screenshot = async (model, options = {}) => {
 
   const scene = new THREE.Scene();
 
-  const ambientLight = new THREE.AmbientLight(0x808080);
-  scene.add(ambientLight);
+  if (options.lights) {
+    options.lights.forEach(light => {
+      scene.add(light);
+    });
+  } else {
+    const ambientLight = new THREE.AmbientLight(0x808080);
+    scene.add(ambientLight);
 
-  const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1);
-  directionalLight.position.set(0.5, 1, 0.5);
-  scene.add(directionalLight);
+    const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1);
+    directionalLight.position.set(0.5, 1, 0.5);
+    scene.add(directionalLight);
+  }
 
   /* const gridHelper = new THREE.GridHelper(10, 10);
   scene.add(gridHelper); */
