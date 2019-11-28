@@ -41,7 +41,11 @@ const screenshot = async (model, options = {}) => {
   model.boundingBoxMesh.visible = false;
   scene.add(model);
   renderer.render(scene, camera);
-  oldParent.add(model);
+  if (oldParent) {
+    oldParent.add(model);
+  } else {
+    scene.remove(model);
+  }
   model.position.copy(oldPosition);
   model.quaternion.copy(oldQuaternion);
   model.scale.copy(oldScale);
