@@ -23,6 +23,9 @@ const screenshot = async (model, options = {}) => {
   const camera = new THREE.PerspectiveCamera(90, width / height, 100, 2000);
   const dist = 500;
   camera.position.copy(model.boundingBoxMesh.position).add(new THREE.Vector3(0, 0, dist));
+  if (options.cameraPosition) {
+    camera.position.add(options.cameraPosition);
+  }
   //camera.lookAt(model.boundingBoxMesh.getWorldPosition(new THREE.Vector3()));
   // const localAabb = model.boundingBoxMesh.scale.clone().applyQuaternion(model.quaternion);
   const modelHeight = Math.max(model.boundingBoxMesh.scale.x, model.boundingBoxMesh.scale.y, model.boundingBoxMesh.scale.z);
