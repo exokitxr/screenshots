@@ -1,3 +1,4 @@
+let renderer = null;
 const screenshot = async (model, options = {}) => {
   const width = typeof options.width === 'number' ? options.width : 1024;
   const height = typeof options.height === 'number' ? options.height : 1024;
@@ -31,10 +32,12 @@ const screenshot = async (model, options = {}) => {
 
   // camera.lookAt(model.boundingBoxMesh.getWorldPosition(new THREE.Vector3()));
 
-  const renderer = new THREE.WebGLRenderer({
-    alpha: true,
-    antialias: true,
-  });
+  if (!renderer) {
+    renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true,
+    });
+  }
   renderer.setSize(width, height);
 
   const oldParent = model.parent;
